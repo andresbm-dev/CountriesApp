@@ -1,7 +1,10 @@
 package com.abm.countriesapp
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.abm.countriesapp.model.usecase.Countries
 import com.abm.countriesapp.model.usecase.GetCountriesApiUseCase
 import com.abm.countriesapp.model.usecase.GetCountriesApiUseCaseImp
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -15,13 +18,18 @@ class CountriesViewModelImp @Inject constructor(
 private val getCountriesApiUseCase: GetCountriesApiUseCaseImp
 ): ViewModel(), CountriesViewModel {
 
+    private val _countries : MutableLiveData<List<Countries>> = MutableLiveData()
+    val countries : LiveData<List<Countries>> = _countries
+
     override fun getCountriesApi() {
         viewModelScope.launch {
             withContext(Dispatchers.IO){
-                getCountriesApiUseCase.invoke()
+                val countries = getCountriesApiUseCase.invoke()
+                if (countries.isNotEmpty()){
+                    _countries.postValue(countries)
+                }
+
             }
         }
     }
-
-
 }
