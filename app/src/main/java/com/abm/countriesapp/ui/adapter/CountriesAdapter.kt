@@ -25,6 +25,9 @@ class CountriesAdapter(
             binding.containerCard.setOnClickListener {
                 callbackDetail(countries)
             }
+            binding.imageCountry.setOnClickListener {
+                callbackDetail(countries)
+            }
         }
     }
 

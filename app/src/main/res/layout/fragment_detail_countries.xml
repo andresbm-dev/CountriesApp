@@ -8,13 +8,42 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_countries"
+        <TextView
+            android:id ="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginHorizontal="8dp"
+            android:textSize="22sp"
+            android:layout_marginTop="16dp"
+            android:text = "Limites"
+            android:gravity="center"
+            />
+        <TextView
+            android:id ="@+id/not_limits"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginHorizontal="8dp"
+            android:textSize="22sp"
+            android:layout_marginTop="16dp"
+            android:text = "no tiene limites"
+            android:gravity="center"
+            android:visibility="gone"
+            tools:visibility="visible"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_detail_countries"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/title"
             android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="16dp"
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

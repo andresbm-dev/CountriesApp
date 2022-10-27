@@ -8,9 +8,12 @@ import android.view.ViewGroup
 import androidx.activity.addCallback
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.abm.countriesapp.R
 import com.abm.countriesapp.databinding.FragmentCountriesBinding
 import com.abm.countriesapp.databinding.FragmentDetailCountriesBinding
+import com.abm.countriesapp.ui.adapter.CountriesAdapter
+import com.abm.countriesapp.ui.adapter.DetailCountryAdapter
 import com.abm.countriesapp.ui.viewmodel.CountriesViewModelImp
 
 class DetailCountriesFragment : Fragment() {
@@ -21,7 +24,7 @@ class DetailCountriesFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentDetailCountriesBinding.inflate(inflater,container, false)
+        binding = FragmentDetailCountriesBinding.inflate(inflater, container, false)
 
         return binding.root
     }
@@ -31,12 +34,22 @@ class DetailCountriesFragment : Fragment() {
         viewModel = ViewModelProvider(requireActivity())[CountriesViewModelImp::class.java]
         viewModel.paramCountry.observe(viewLifecycleOwner) { countries ->
             if (countries != null) {
-                val contry = countries
+                if (countries.borders != null) {
+                    binding.rvDetailCountries.apply {
+                        adapter = DetailCountryAdapter(countries.borders!!)
+                        layoutManager = LinearLayoutManager(requireActivity())
+                    }
+                }else{
+                    binding.notLimits.visibility = View.VISIBLE
+                    binding.rvDetailCountries.visibility = View.GONE
+                }
+
             }
         }
     }
-    companion object{
-        fun newInstance():Fragment{
+
+    companion object {
+        fun newInstance(): Fragment {
             val args = Bundle()
             val fragment = DetailCountriesFragment()
             fragment.arguments = args
