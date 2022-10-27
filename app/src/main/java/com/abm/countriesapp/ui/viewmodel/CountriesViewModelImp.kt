@@ -20,6 +20,9 @@ private val getCountriesApiUseCase: GetCountriesApiUseCaseImp
     private val _countries : MutableLiveData<List<Countries>> = MutableLiveData()
     val countries : LiveData<List<Countries>> = _countries
 
+    private val _paramCountry : MutableLiveData<Countries> = MutableLiveData()
+    val paramCountry : LiveData<Countries> = _paramCountry
+
     override fun getCountriesApi() {
         viewModelScope.launch {
             withContext(Dispatchers.IO){
@@ -30,5 +33,8 @@ private val getCountriesApiUseCase: GetCountriesApiUseCaseImp
 
             }
         }
+    }
+    fun sendParams(countries: Countries){
+        _paramCountry.postValue(countries)
     }
 }

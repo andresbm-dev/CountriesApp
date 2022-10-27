@@ -8,16 +8,23 @@ import com.abm.countriesapp.databinding.ItemAdapterCountriesBinding
 import com.abm.countriesapp.domain.model.Countries
 import com.bumptech.glide.Glide
 
-class CountriesAdapter(private val countries: List<Countries>):RecyclerView.Adapter<CountriesAdapter.ViewHolder>() {
+class CountriesAdapter(
+    private val countries: List<Countries>,
+    private val callbackDetail:(Countries)->Unit
+
+    ):RecyclerView.Adapter<CountriesAdapter.ViewHolder>() {
 
     class ViewHolder(private val binding: ItemAdapterCountriesBinding) :RecyclerView.ViewHolder(binding.root){
-        fun bind(countries: Countries) {
+        fun bind(countries: Countries, callbackDetail: (Countries) -> Unit) {
 
             binding.tvNameCountry.text = countries.nameCountry?.nameOfficial
-            val capital = countries.capital?.forEach {it[0]}
-            binding.tvNameCapital.text = capital.toString()
+            countries.capital?.forEach{
+                binding.tvNameCapital.text = it
+            }
             Glide.with(context).load(countries.flag?.flagPng).into(binding.imageCountry)
-
+            binding.containerCard.setOnClickListener {
+                callbackDetail(countries)
+            }
         }
     }
 
@@ -27,7 +34,7 @@ class CountriesAdapter(private val countries: List<Countries>):RecyclerView.Adap
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(countries[position])
+        holder.bind(countries[position], callbackDetail)
     }
 
     override fun getItemCount(): Int =countries.size
