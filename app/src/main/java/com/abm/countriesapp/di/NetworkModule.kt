@@ -1,6 +1,6 @@
 package com.abm.countriesapp.di
 
-import com.abm.countriesapp.repository.ApiService
+import com.abm.countriesapp.data.repository.ApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

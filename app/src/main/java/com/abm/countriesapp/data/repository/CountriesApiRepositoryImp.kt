@@ -1,6 +1,6 @@
-package com.abm.countriesapp.repository
+package com.abm.countriesapp.data.repository
 
-import com.abm.countriesapp.model.usecase.Countries
+import com.abm.countriesapp.domain.model.Countries
 import javax.inject.Inject
 
 class CountriesApiRepositoryImp @Inject constructor(

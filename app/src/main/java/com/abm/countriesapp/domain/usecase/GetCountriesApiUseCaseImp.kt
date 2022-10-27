@@ -1,6 +1,7 @@
-package com.abm.countriesapp.model.usecase
+package com.abm.countriesapp.domain.usecase
 
-import com.abm.countriesapp.repository.CountriesApiRepositoryImp
+import com.abm.countriesapp.data.repository.CountriesApiRepositoryImp
+import com.abm.countriesapp.domain.model.Countries
 import javax.inject.Inject
 
 class GetCountriesApiUseCaseImp @Inject constructor(

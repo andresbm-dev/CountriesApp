@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="220dp"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:cardCornerRadius="8dp"
+    android:elevation="4dp"
+    android:layout_margin="5dp"
+    android:id="@+id/itemCat">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:background="#00FEFEFF"
+        >
+
+        <TextView
+            android:id="@+id/tv_name_country"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_gravity="center"
+            android:layout_marginTop="4dp"
+            android:layout_marginStart="16dp"
+            android:textColor="@color/black"
+            android:fontFamily="sans-serif-light"
+            android:textSize="24sp"
+            tools:text = "Colombia"
+            android:gravity="center"
+            />
+        <TextView
+            android:id ="@+id/tv_name_capital"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/tv_name_country"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginHorizontal="8dp"
+            android:textSize="18sp"
+            android:layout_marginTop="16dp"
+            tools:text = "Bogotá"
+            android:gravity="center"
+            />
+
+        <ImageButton
+            android:id="@+id/image_country"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="5dp"
+            android:background="@drawable/bordes_redondos"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_name_capital"
+            android:gravity="center"
+            />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
