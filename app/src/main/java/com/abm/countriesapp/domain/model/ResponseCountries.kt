@@ -9,7 +9,14 @@ data class Countries(
     @SerializedName("capital") var capital :List<String>? = null,
     @SerializedName("borders") var borders :List<String>? = null,
     @SerializedName("flags") var flag : FlagsCountries? = null,
-)
+    @SerializedName("independent") var independent : Boolean? = null,
+    @SerializedName("region") var region : String? = null,
+    @SerializedName("area") var area : Double? = null,
+    @SerializedName("population") var population : String? = null,
+    @SerializedName("continents") var continents : List<String>? = null,
+
+
+    )
 
 data class FlagsCountries(
     @SerializedName("png") var flagPng :String? = null,

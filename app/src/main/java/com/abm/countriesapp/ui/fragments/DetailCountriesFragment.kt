@@ -34,6 +34,16 @@ class DetailCountriesFragment : Fragment() {
         viewModel = ViewModelProvider(requireActivity())[CountriesViewModelImp::class.java]
         viewModel.paramCountry.observe(viewLifecycleOwner) { countries ->
             if (countries != null) {
+
+                binding.nameCountry.text = countries.nameCountry?.nameCommon.toString()
+                binding.nameCountry.visibility = View.VISIBLE
+                binding.continent.text = countries.continents.toString()
+                binding.continent.visibility = View.VISIBLE
+                binding.area.text = countries.area.toString()
+                binding.area.visibility = View.VISIBLE
+                binding.region.text = countries.region.toString()
+                binding.region.visibility = View.VISIBLE
+
                 if (countries.borders != null) {
                     binding.rvDetailCountries.apply {
                         adapter = DetailCountryAdapter(countries.borders!!)

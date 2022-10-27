@@ -9,7 +9,7 @@ import com.abm.countriesapp.domain.model.Countries
 import com.bumptech.glide.Glide
 
 class CountriesAdapter(
-    private val countries: List<Countries>,
+    private var countries: List<Countries>,
     private val callbackDetail:(Countries)->Unit
 
     ):RecyclerView.Adapter<CountriesAdapter.ViewHolder>() {
@@ -17,7 +17,7 @@ class CountriesAdapter(
     class ViewHolder(private val binding: ItemAdapterCountriesBinding) :RecyclerView.ViewHolder(binding.root){
         fun bind(countries: Countries, callbackDetail: (Countries) -> Unit) {
 
-            binding.tvNameCountry.text = countries.nameCountry?.nameOfficial
+            binding.tvNameCountry.text = countries.nameCountry?.nameCommon
             countries.capital?.forEach{
                 binding.tvNameCapital.text = it
             }
@@ -41,4 +41,8 @@ class CountriesAdapter(
     }
 
     override fun getItemCount(): Int =countries.size
+    fun updateCountries(countries : List<Countries>){
+        this.countries = countries
+        notifyDataSetChanged()
+    }
 }

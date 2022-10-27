@@ -9,14 +9,23 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <EditText
+            android:id="@+id/et_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            android:singleLine ="true"
+            android:maxLines ="1"
+            android:inputType="text"
+            android:imeOptions="actionDone"/>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_countries"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
             android:layout_marginHorizontal="10dp"
-            tools:listitem="@layout/item_adapter_countries"
-            />
+            app:layout_constraintTop_toBottomOf="@id/et_search"
+            tools:listitem="@layout/item_adapter_countries" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
   </FrameLayout>
