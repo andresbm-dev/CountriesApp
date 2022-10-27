@@ -19,7 +19,6 @@ Tambien se tiene el viewModel utilizado para lanzar la corrutina y hacer el llam
 ● capa data:En esta capa se tiene el repository y la interfaz las cuales son utilizadas para hacer el llamado a la api.
 
 Lista de paises 
-![image](https://user-images.githubusercontent.com/93236919/198182999-c69d3284-864e-4d79-bc90-9b9aa3152c41.png)
+![image](https://user-images.githubusercontent.com/93236919/198417700-1d4ab7b1-1847-4ef0-b2a9-7eb7f8efa8f0.png)
 Detalles del pais
-![image](https://user-images.githubusercontent.com/93236919/198183064-249ca217-9f39-43fd-ad4f-957277dc7336.png)
-
+![image](https://user-images.githubusercontent.com/93236919/198418264-4bd697c8-b052-40f5-aeab-7d886ea0ff66.png)
