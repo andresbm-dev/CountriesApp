@@ -1,4 +1,4 @@
-package com.abm.countriesapp.data.repository
+package com.abm.countriesapp.data.network.repository
 
 import com.abm.countriesapp.domain.model.Countries
 import retrofit2.Response

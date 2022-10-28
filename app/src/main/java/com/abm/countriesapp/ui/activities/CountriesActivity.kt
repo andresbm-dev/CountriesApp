@@ -25,4 +25,5 @@ class CountriesActivity : AppCompatActivity() {
         navController.navigate(R.id.countriesFragment)
     }
 
+
 }

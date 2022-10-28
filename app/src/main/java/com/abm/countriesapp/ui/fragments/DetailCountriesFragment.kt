@@ -9,12 +9,14 @@ import androidx.activity.addCallback
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.abm.countriesapp.ApplicationActivity
 import com.abm.countriesapp.R
 import com.abm.countriesapp.databinding.FragmentCountriesBinding
 import com.abm.countriesapp.databinding.FragmentDetailCountriesBinding
 import com.abm.countriesapp.ui.adapter.CountriesAdapter
 import com.abm.countriesapp.ui.adapter.DetailCountryAdapter
 import com.abm.countriesapp.ui.viewmodel.CountriesViewModelImp
+import com.bumptech.glide.Glide
 
 class DetailCountriesFragment : Fragment() {
     private lateinit var binding: FragmentDetailCountriesBinding
@@ -37,6 +39,8 @@ class DetailCountriesFragment : Fragment() {
 
                 binding.nameCountry.text = countries.nameCountry?.nameCommon.toString()
                 binding.nameCountry.visibility = View.VISIBLE
+                Glide.with(requireActivity()).load(countries.flag?.flagPng).into(binding.imageCountry)
+                binding.imageCountry.visibility = View.VISIBLE
                 binding.continent.text = countries.continents.toString()
                 binding.continent.visibility = View.VISIBLE
                 binding.area.text = countries.area.toString()
@@ -49,7 +53,7 @@ class DetailCountriesFragment : Fragment() {
                         adapter = DetailCountryAdapter(countries.borders!!)
                         layoutManager = LinearLayoutManager(requireActivity())
                     }
-                }else{
+                } else {
                     binding.notLimits.visibility = View.VISIBLE
                     binding.rvDetailCountries.visibility = View.GONE
                 }
@@ -57,15 +61,5 @@ class DetailCountriesFragment : Fragment() {
             }
         }
     }
-
-    companion object {
-        fun newInstance(): Fragment {
-            val args = Bundle()
-            val fragment = DetailCountriesFragment()
-            fragment.arguments = args
-            return fragment
-        }
-    }
-
 
 }

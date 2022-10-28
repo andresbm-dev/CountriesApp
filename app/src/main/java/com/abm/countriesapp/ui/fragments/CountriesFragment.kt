@@ -19,8 +19,8 @@ import com.abm.countriesapp.ui.viewmodel.CountriesViewModelImp
 
 class CountriesFragment : Fragment() {
     private lateinit var binding: FragmentCountriesBinding
-    private lateinit var viewModel:CountriesViewModelImp
-    private lateinit var navigation:NavController
+    private lateinit var viewModel: CountriesViewModelImp
+    private lateinit var navigation: NavController
     private lateinit var countryAdapter: CountriesAdapter
     private var countriesMutable = mutableListOf<Countries>()
 
@@ -28,7 +28,7 @@ class CountriesFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentCountriesBinding.inflate(inflater,container, false)
+        binding = FragmentCountriesBinding.inflate(inflater, container, false)
 
         return binding.root
     }
@@ -38,9 +38,10 @@ class CountriesFragment : Fragment() {
         navigation = Navigation.findNavController(view)
         viewModel = ViewModelProvider(requireActivity())[CountriesViewModelImp::class.java]
 
-        binding.etSearch.addTextChangedListener{filter->
-            val countriesFilters = countriesMutable.filter {country->
-                country.nameCountry?.nameCommon?.lowercase()?.contains(filter.toString().lowercase())!!
+        binding.etSearch.addTextChangedListener { filter ->
+            val countriesFilters = countriesMutable.filter { country ->
+                country.nameCountry?.nameCommon?.lowercase()
+                    ?.contains(filter.toString().lowercase())!!
             }
             countryAdapter.updateCountries(countriesFilters)
         }
@@ -64,15 +65,5 @@ class CountriesFragment : Fragment() {
         viewModel.sendParams(countries)
         navigation.navigate(R.id.detailCountriesFragment)
     }
-
-    companion object{
-        fun newInstance():Fragment{
-            val args = Bundle()
-            val fragment = CountriesFragment()
-            fragment.arguments = args
-            return fragment
-        }
-    }
-
 
 }

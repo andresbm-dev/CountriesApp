@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFDFD"
     tools:context=".ui.fragments.DetailCountriesFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -26,6 +27,23 @@
             android:textStyle="bold"
             tools:visibility="visible" />
 
+        <ImageButton
+            android:id="@+id/image_country"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="5dp"
+            android:background="@drawable/bordes_redondos"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/name_country"
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true"
+            android:visibility="gone"
+            tools:visibility="visible"
+            android:contentDescription="description" />
+
 
         <TextView
             android:id="@+id/continent"
@@ -38,7 +56,7 @@
             android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/name_country"
+            app:layout_constraintTop_toBottomOf="@id/image_country"
             tools:visibility="visible" />
 
         <TextView
@@ -78,6 +96,7 @@
             android:gravity="center"
             android:text="Países con quiene tienen Limites"
             android:textSize="22sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/area" />
