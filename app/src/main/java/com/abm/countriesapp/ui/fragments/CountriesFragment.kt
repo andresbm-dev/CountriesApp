@@ -1,17 +1,18 @@
 package com.abm.countriesapp.ui.fragments
 
+
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.abm.countriesapp.R
+import com.abm.countriesapp.data.database.CountriesEntity
 import com.abm.countriesapp.databinding.FragmentCountriesBinding
 import com.abm.countriesapp.domain.model.Countries
 import com.abm.countriesapp.ui.adapter.CountriesAdapter
@@ -24,6 +25,8 @@ class CountriesFragment : Fragment() {
     private lateinit var navigation: NavController
     private lateinit var countryAdapter: CountriesAdapter
     private var countriesMutable = mutableListOf<Countries>()
+    private var countriesLocalMutable = mutableListOf<CountriesEntity>()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -59,6 +62,15 @@ class CountriesFragment : Fragment() {
                     layoutManager = GridLayoutManager(requireActivity(), 2)
                 }
             }
+            else{
+                viewModel.getCountriesLocal()
+            }
+        }
+
+        viewModel.countriesDataBase.observe(viewLifecycleOwner) {
+                if (it!=null){
+                    countriesLocalMutable = it as MutableList<CountriesEntity>
+                }
         }
     }
 
