@@ -38,14 +38,15 @@ Tambien se tiene el viewModel utilizado para lanzar la corrutina y hacer el llam
 
 
 Lista de paises llamados desde la api 
+
 ![image](https://user-images.githubusercontent.com/93236919/198848403-ebc46237-5191-4b67-9310-8d87010332a6.png)
 
 
 Detalles del pais
 
-![image](https://user-images.githubusercontent.com/93236919/198418264-4bd697c8-b052-40f5-aeab-7d886ea0ff66.png)
+![image](https://user-images.githubusercontent.com/93236919/198850878-d811f442-af0c-49fc-a0a3-b75a6f107de7.png)
 
-Buscador
+Funcionalidad del Buscador
 
 ![image](https://user-images.githubusercontent.com/93236919/198848422-2ad396c7-ef62-4f21-b617-ad3656346ce3.png)
 
