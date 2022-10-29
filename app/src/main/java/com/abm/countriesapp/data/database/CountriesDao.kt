@@ -10,7 +10,4 @@ interface CountriesDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertCountries(countries: CountriesEntity)
 
-    @Delete()
-    suspend fun deleteFavorite(countries: List<CountriesEntity>)
-
 }
