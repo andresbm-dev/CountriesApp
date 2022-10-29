@@ -17,7 +17,7 @@ class CountriesAdapter(
     class ViewHolder(private val binding: ItemAdapterCountriesBinding) :RecyclerView.ViewHolder(binding.root){
         fun bind(countries: Countries, callbackDetail: (Countries) -> Unit) {
 
-            binding.tvNameCountry.text = countries.nameCountry?.nameCommon
+            binding.tvNameCountry.text = countries.nameCountry?.nameOfficial
             countries.capital?.forEach{
                 binding.tvNameCapital.text = it
             }

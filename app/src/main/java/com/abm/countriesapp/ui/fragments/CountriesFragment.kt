@@ -9,6 +9,7 @@ import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.abm.countriesapp.R
 import com.abm.countriesapp.databinding.FragmentCountriesBinding
@@ -55,7 +56,7 @@ class CountriesFragment : Fragment() {
                 }
                 binding.rvCountries.apply {
                     adapter = countryAdapter
-                    layoutManager = LinearLayoutManager(requireActivity())
+                    layoutManager = GridLayoutManager(requireActivity(), 2)
                 }
             }
         }

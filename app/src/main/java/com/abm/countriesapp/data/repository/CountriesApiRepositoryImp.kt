@@ -1,10 +1,11 @@
-package com.abm.countriesapp.data.network.repository
+package com.abm.countriesapp.data.repository
 
+import com.abm.countriesapp.data.remote.ApiService
 import com.abm.countriesapp.domain.model.Countries
 import javax.inject.Inject
 
 class CountriesApiRepositoryImp @Inject constructor(
- private val apiService: ApiService
+    private val apiService: ApiService
 ) : CountriesApiRepository {
     override suspend fun getCountriesApi(): List<Countries>{
         return try {
@@ -14,5 +15,4 @@ class CountriesApiRepositoryImp @Inject constructor(
             emptyList()
         }
     }
-
 }
