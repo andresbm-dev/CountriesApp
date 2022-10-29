@@ -34,23 +34,24 @@ class CountriesViewModelImp @Inject constructor(
     val progressBar :LiveData<Boolean> = _progressBar
 
     override fun getCountriesApi() {
-        _progressBar.postValue(true)
         viewModelScope.launch {
+            _progressBar.postValue(true)
             withContext(Dispatchers.IO) {
                 val countries = getCountriesApiUseCase.invoke()
-                    _countries.postValue(countries)
-                    _progressBar.postValue(false)
+                _countries.postValue(countries)
             }
+            _progressBar.postValue(false)
         }
     }
 
     override fun getCountriesLocal() {
-        _progressBar.postValue(true)
         viewModelScope.launch {
+            _progressBar.postValue(true)
             withContext(Dispatchers.IO) {
-                _countriesDataBase.postValue(getCountriesLocalUseCase.invoke())
-                _progressBar.postValue(false)
+                val countriesLocal = getCountriesLocalUseCase.invoke()
+                _countriesDataBase.postValue(countriesLocal)
             }
+            _progressBar.postValue(false)
         }
     }
 
