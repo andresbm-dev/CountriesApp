@@ -1,4 +1,4 @@
-package com.abm.countriesapp
+package com.abm.countriesapp.base
 
 import android.annotation.SuppressLint
 import android.app.Application

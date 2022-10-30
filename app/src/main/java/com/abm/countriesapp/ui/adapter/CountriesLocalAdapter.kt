@@ -1,10 +1,9 @@
 package com.abm.countriesapp.ui.adapter
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.abm.countriesapp.ApplicationActivity
+import com.abm.countriesapp.base.ApplicationActivity
 import com.abm.countriesapp.data.database.CountriesEntity
 import com.abm.countriesapp.databinding.ItemAdapterLocalCountriesBinding
 import com.bumptech.glide.Glide
@@ -41,7 +40,6 @@ class CountriesLocalAdapter(
 
     override fun getItemCount(): Int = countries.size
 
-    @SuppressLint("NotifyDataSetChanged")
     fun updateCountries(countries: List<CountriesEntity>) {
         this.countries = countries
         notifyDataSetChanged()

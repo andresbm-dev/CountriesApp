@@ -21,8 +21,8 @@ class CountriesViewModelImp @Inject constructor(
     private val getCountriesLocalUseCase: GetCountriesLocalUseCaseImp
 ) : ViewModel(), CountriesViewModel {
 
-    private val _countries: MutableLiveData<List<Countries>> = MutableLiveData()
-    val countries: LiveData<List<Countries>> = _countries
+    val _countries: MutableLiveData<List<Countries>> = MutableLiveData()
+    val countries: LiveData<List<Countries>> get()  = _countries
 
     private val _paramCountry: MutableLiveData<Countries> = MutableLiveData()
     val paramCountry: LiveData<Countries> = _paramCountry
@@ -37,8 +37,7 @@ class CountriesViewModelImp @Inject constructor(
         viewModelScope.launch {
             _progressBar.postValue(true)
             withContext(Dispatchers.IO) {
-                val countries = getCountriesApiUseCase.invoke()
-                _countries.postValue(countries)
+                _countries.postValue(getCountriesApiUseCase.invoke())
             }
             _progressBar.postValue(false)
         }

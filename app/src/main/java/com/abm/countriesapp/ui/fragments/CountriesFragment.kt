@@ -72,9 +72,11 @@ class CountriesFragment : Fragment() {
                 viewModel.getCountriesLocal()
                 binding.rvCountries.visibility = View.GONE
             }
-            viewModel.progressBar.observe(viewLifecycleOwner){
-                binding.progressCircular.isVisible =it
-            }
+
+        }
+
+        viewModel.progressBar.observe(viewLifecycleOwner){
+            binding.progressCircular.isVisible =it
         }
 
         viewModel.countriesDataBase.observe(viewLifecycleOwner) { countriesLocal ->

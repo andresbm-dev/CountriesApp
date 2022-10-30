@@ -5,15 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.addCallback
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.abm.countriesapp.ApplicationActivity
-import com.abm.countriesapp.R
-import com.abm.countriesapp.databinding.FragmentCountriesBinding
 import com.abm.countriesapp.databinding.FragmentDetailCountriesBinding
-import com.abm.countriesapp.ui.adapter.CountriesAdapter
 import com.abm.countriesapp.ui.adapter.DetailCountryAdapter
 import com.abm.countriesapp.ui.viewmodel.CountriesViewModelImp
 import com.bumptech.glide.Glide

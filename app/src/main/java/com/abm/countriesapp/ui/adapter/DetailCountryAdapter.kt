@@ -3,7 +3,7 @@ package com.abm.countriesapp.ui.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.abm.countriesapp.ApplicationActivity.Companion.context
+import com.abm.countriesapp.base.ApplicationActivity.Companion.context
 import com.abm.countriesapp.R
 
 import com.abm.countriesapp.databinding.ItemAdapterDetailCountryBinding
