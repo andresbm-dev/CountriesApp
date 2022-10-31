@@ -31,10 +31,11 @@ Requerimientos Tecnicos:
 ● Al seleccionar cada país debo poder ver con quien limita y traer la información básica de los paises con los que limita.
 
 Responsabilidades de cada capa:
-● capa de UI: En esta capa se encuentra la clase CountriesActivity la cual es la encargada de gestionar la vista y hacer la navegación entre el fragment countriesFragment y DetailCountriesFragment, mostrar la lista de paises y sus detalles.
-Tambien se tiene el viewModel utilizado para lanzar la corrutina y hacer el llamado en segundo plano de la api, capturar el listado de paises y proporcionarlos en los diferentes fragments que lo utilizan.
-● capa domain: En esta capa se tiene el modelo de datos que mapea la respuesta de la api y son utilizados para mostar sus datos, además se encuenta el caso de uso que se encarga de llamar al repositorio que llama los datos de la api.
-● capa data:En esta capa se tiene el repository y la interfaz las cuales son utilizadas para hacer el llamado a la api.
+● capa de UI: En esta capa se encuentra la clase CountriesActivity la cual es la encargada de gestionar la vista y hacer la navegación entre el fragment countriesFragment y DetailCountriesFragment, mostrar la lista de paises y sus detalles cuando hay internet, en caso de que no haya internet se muestra solamente la lista sin sus detalles desde base de datos.
+Tambien se tiene el viewModel utilizado para lanzar la corrutina y hacer el llamado en segundo plano de la api, capturar el listado de paises y proporcionarlos en los diferentes fragments que lo utilizan, además de llamar a la base de datos para obtener sus datos.
+● capa domain: En esta capa se tiene el modelo de datos que mapea la respuesta de la api y son utilizados para mostar sus datos, además se encuenta el caso de uso que se encarga de llamar al repositorio que llama los datos de la api y almacenar los datos de la lista en la base de datos.
+Tambien se tiene el caso de uso para el llamado de la base de datos, donde se recupera solamente la lista general de paises.
+● capa data:En esta capa se tiene el repository y la interfaz las cuales son utilizadas para hacer el llamado a la api y la fuente de datos local que corresponde a la base de datos, el DAO y el entity.
 
 
 Lista de paises llamados desde la api 
