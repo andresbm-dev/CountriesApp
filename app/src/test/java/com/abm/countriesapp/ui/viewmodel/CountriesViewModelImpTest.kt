@@ -1,10 +1,14 @@
 package com.abm.countriesapp.ui.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import com.abm.countriesapp.CountriesCoroutineRule
+import com.abm.countriesapp.data.database.CountriesEntity
 import com.abm.countriesapp.domain.model.Countries
 import com.abm.countriesapp.domain.model.FlagsCountries
 import com.abm.countriesapp.domain.model.NameCountry
+import com.abm.countriesapp.domain.usecase.GetCountriesApiUseCase
 import com.abm.countriesapp.domain.usecase.GetCountriesApiUseCaseImp
+import com.abm.countriesapp.domain.usecase.GetCountriesLocalUseCase
 import com.abm.countriesapp.domain.usecase.GetCountriesLocalUseCaseImp
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
@@ -19,11 +23,11 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
-
-
 @ExperimentalCoroutinesApi
 class CountriesViewModelImpTest {
-
+    /*@ExperimentalCoroutinesApi
+    @get:Rule
+    var countryCoroutineRule = CountriesCoroutineRule()*/
     @RelaxedMockK
     private lateinit var getCountriesApiUseCase: GetCountriesApiUseCaseImp
 
@@ -103,6 +107,4 @@ class CountriesViewModelImpTest {
 
         assert(countriesViewModelImp._countries.value == null)
     }
-
-
 }

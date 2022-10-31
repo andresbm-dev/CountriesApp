@@ -14,8 +14,6 @@ data class Countries(
     @SerializedName("area") var area : Double? = null,
     @SerializedName("population") var population : String? = null,
     @SerializedName("continents") var continents : List<String>? = null,
-
-
     )
 
 data class FlagsCountries(
