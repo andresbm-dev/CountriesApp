@@ -6,9 +6,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.abm.countriesapp.data.database.CountriesEntity
 import com.abm.countriesapp.domain.model.Countries
-import com.abm.countriesapp.domain.usecase.GetCountriesApiUseCaseImp
+import com.abm.countriesapp.domain.usecase.GetCountriesApiUseCase
 import com.abm.countriesapp.domain.usecase.GetCountriesLocalUseCase
-import com.abm.countriesapp.domain.usecase.GetCountriesLocalUseCaseImp
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -17,11 +16,11 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CountriesViewModelImp @Inject constructor(
-    private val getCountriesApiUseCase: GetCountriesApiUseCaseImp,
-    private val getCountriesLocalUseCase: GetCountriesLocalUseCaseImp
+    private val getCountriesApiUseCase: GetCountriesApiUseCase,
+    private val getCountriesLocalUseCase: GetCountriesLocalUseCase
 ) : ViewModel(), CountriesViewModel {
 
-    val _countries: MutableLiveData<List<Countries>> = MutableLiveData()
+    var _countries: MutableLiveData<List<Countries>> = MutableLiveData()
     val countries: LiveData<List<Countries>> get()  = _countries
 
     private val _paramCountry: MutableLiveData<Countries> = MutableLiveData()

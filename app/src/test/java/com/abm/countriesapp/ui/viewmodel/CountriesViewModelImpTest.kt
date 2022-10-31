@@ -18,17 +18,80 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
-import org.junit.After
-import org.junit.Before
-import org.junit.Rule
-import org.junit.Test
+import org.junit.*
 
 @ExperimentalCoroutinesApi
 class CountriesViewModelImpTest {
-    /*@ExperimentalCoroutinesApi
+    @ExperimentalCoroutinesApi
     @get:Rule
-    var countryCoroutineRule = CountriesCoroutineRule()*/
-    @RelaxedMockK
+    var countryCoroutineRule = CountriesCoroutineRule()
+
+    @Test
+    fun `get data of viewModel of useCase from api and data base`() {
+
+        class CountriesApiUseCaseFake : GetCountriesApiUseCase {
+            override suspend fun invoke(): List<Countries> = listOf(
+                Countries(
+                    nameCountry = NameCountry(nameCommon = "Barbados", nameOfficial = "Barbados"),
+                    capital = listOf("Bridgetown"),
+                    borders = null,
+                    flag = FlagsCountries(flagPng = "https://flagcdn.com/w320/bb.png, flagSvg=https://flagcdn.com/bb.svg"),
+                    independent = true,
+                    region = "Americas",
+                    area = 430.0,
+                    population = "287371",
+                    continents = listOf("North America")
+                ),
+                Countries(
+                    nameCountry = NameCountry(
+                        nameCommon = "Colombia",
+                        nameOfficial = "LocoLombia"
+                    ),
+                    capital = listOf("Bogota"),
+                    borders = null,
+                    flag = FlagsCountries(flagPng = "https://flagcdn.com/w320/bb.png, flagSvg=https://flagcdn.com/bb.svg"),
+                    independent = true,
+                    region = "Americas",
+                    area = 1231.0,
+                    population = "50000000",
+                    continents = listOf("South America")
+                ),
+                Countries(
+                    nameCountry = NameCountry(
+                        nameCommon = "British Indian Ocean Territory",
+                        nameOfficial = "British Indian Ocean Territory"
+                    ),
+                    capital = listOf("Diego Garcia"),
+                    borders = null,
+                    flag = FlagsCountries(flagPng = "https://flagcdn.com/w320/io.png, flagSvg=https://flagcdn.com/io.svg"),
+                    independent = false,
+                    region = "Africa",
+                    area = 60.0,
+                    population = "3000",
+                    continents = listOf("Asia")
+                )
+            )
+        }
+
+        class CountriesLocalUseCaseFake : GetCountriesLocalUseCase {
+            override suspend fun invoke(): List<CountriesEntity> {
+                return listOf(
+                    CountriesEntity(id = 0, "Colombia", "", "Bogota"),
+                    CountriesEntity(
+                        id = 1, "Argentina", "", "Buenos Aires"
+                    ),
+                    CountriesEntity(
+                        id = 2, "", "", ""
+                    ),
+                )
+            }
+        }
+
+         val viewModel = CountriesViewModelImp(CountriesApiUseCaseFake(),CountriesLocalUseCaseFake())
+
+        Assert.assertEquals(3, viewModel._countries.value?.size)
+    }
+    /*@RelaxedMockK
     private lateinit var getCountriesApiUseCase: GetCountriesApiUseCaseImp
 
     @RelaxedMockK
@@ -106,5 +169,5 @@ class CountriesViewModelImpTest {
 
 
         assert(countriesViewModelImp._countries.value == null)
-    }
+    }*/
 }
